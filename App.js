@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Animated } from 'react-native';
 
+import Timer from './Timer.js';
+
 export default function App() {
 
   let state = {
@@ -21,10 +23,6 @@ export default function App() {
 
   return (
     <>
-    {/* <View style={styles.container}>
-      <Text>Making changes here!</Text>
-      <StatusBar style="auto" />
-    </View> */}
 
     <View style={styles.container}>      
       <TouchableOpacity style={styles.button} onPress={() => startAnimation()}>
@@ -32,11 +30,9 @@ export default function App() {
       </TouchableOpacity>
     </View>
 
-
     <View style={styles.container}>
 
-
-    <Animated.View
+      <Animated.View
           style={{
             transform: [
               {
@@ -60,9 +56,30 @@ export default function App() {
         source={require('./assets/images/like.png')}
         style={styles.image}/>
 
-        </Animated.View>
+      </Animated.View>
       
-      </View>
+    </View>
+
+
+    <View style={styles.container}>
+
+      <Text style={styles.text}>Countdown will go here</Text>
+
+    </View>
+
+    <View style={styles.container}>
+
+      <Timer/>
+
+    </View>
+
+
+
+
+
+
+
+
 
     </>
   );
