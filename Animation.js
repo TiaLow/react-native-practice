@@ -32,13 +32,13 @@ const Animation = () => {
 
   let state = {
     ready: false,
-    animatedValue: new Animated.Value(-1)
+    animatedValue: new Animated.Value(1)
   };
   
   function startAnimation(){
     Animated.timing(state.animatedValue, {
-      toValue: 3,
-      duration: 500
+      toValue: -1,
+      duration: 2000
     }).start();
   };
   
@@ -57,7 +57,7 @@ const Animation = () => {
       style={{
         transform: [
           {
-            translateX: animatedValue.interpolate({
+            translateY: animatedValue.interpolate({
               inputRange: [0, 1],
               outputRange: [-600, 0]
             })
