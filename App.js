@@ -4,6 +4,7 @@ import { StyleSheet, View} from 'react-native';
 
 import Animation from './Animation.js';
 import Timer from './Timer.js';
+import ButtonFill from './ButtonFill.js';
 
 export default function App() {
 
@@ -11,14 +12,18 @@ export default function App() {
   return (
     <>
 
-    <View style={styles.container}>
+    {/* <View style={styles.container}>
       <Animation/>
-    </View>
-
+    </View> */}
 
     <View style={styles.container}>
-      <Timer/>
+      <ButtonFill/>
     </View>
+
+
+    {/* <View style={styles.container}>
+      <Timer/>
+    </View> */}
 
 
     </>
