@@ -1,8 +1,66 @@
 
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Animated } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
 
-const styles = StyleSheet.create({
+  
+const ButtonFill = () => {
+
+  const [progressStatus, setProgressStatus ] = useState(0);
+
+  // const [progressStatus, setProgressStatus ] = useState(new Animated.Value(0));
+
+  const percentageFill = new Animated.Value(0);  
+
+  const onAnimate = () =>{  
+    percentageFill.addListener(({value})=> {  
+      setProgressStatus(parseInt(value));  
+    });  
+
+
+    Animated.timing(percentageFill, {  
+      toValue: 100,  
+      duration: 30000,  
+    }).start();  
+  }  
+
+
+    return (  
+      <>
+        <TouchableOpacity style={{...styles.button, style.somethingElse}} onPress={() => onAnimate()}>
+          <Text style={styles.buttonText}>Fill it up</Text>
+        </TouchableOpacity>
+
+      <View style={styles.container}>
+
+            <Animated.View  
+                style={[  
+                  styles.inner,{width: progressStatus +"%"},  
+                ]}  
+                />  
+
+      </View>  
+      </>
+    );  
+    
+}
+  
+  const styles = StyleSheet.create({  
+    container: {  
+    width: "100%",  
+    height: 40,  
+    padding: 3,  
+    borderColor: "black",  
+    borderWidth: 3,  
+    borderRadius: 30,  
+    marginTop: 200,  
+    justifyContent: "center",  
+  },  
+  inner:{  
+    width: "100%",  
+    height: 30,  
+    borderRadius: 15,  
+    backgroundColor:"grey",  
+  } 
   button: {
     backgroundColor: "#480032",
     width: 100,
@@ -16,70 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center"
   },
-  text: {
-    fontSize: 20,
-    color: "black",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-});
-
-const ButtonFill = () => {
-
-  let state = {
-    ready: false,
-    animatedValue: new Animated.Value(1)
-  };
-  
-  function startAnimation(){
-
-    console.log('hopefully watching this thing fill up!')
-
-    // Animated.timing(state.animatedValue, {
-    //   toValue: -1,
-    //   duration: 2000
-    // }).start();
-
-  };
-  
-  let { animatedValue } = state;
-
-  return (
-
-    <>
-    
-    <TouchableOpacity style={styles.button} onPress={() => startAnimation()}>
-      <Text style={styles.buttonText}>Watch this shit!</Text>
-    </TouchableOpacity>
-
-
-    <Animated.View
-      style={{
-        transform: [
-          {
-            translateY: animatedValue.interpolate({
-              inputRange: [0, 1],
-              outputRange: [-600, 0]
-            })
-          }
-        ],
-        height: 250,
-        width: 200,
-        margin: 5,
-        borderRadius: 12,
-        justifyContent: "center",
-        useNativeDriver: true,
-      }}
-    >
-
-
-    </Animated.View>    
-
-    </>
-)
-
-}
-
+}); 
 
 
 

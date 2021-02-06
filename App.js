@@ -1,9 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
 
-import Animation from './Animation.js';
-import Timer from './Timer.js';
+// import Animation from './Animation.js';
+// import Timer from './Timer.js';
 import ButtonFill from './ButtonFill.js';
 
 export default function App() {
@@ -20,8 +19,8 @@ export default function App() {
       <ButtonFill/>
     </View>
 
-
-    {/* <View style={styles.container}>
+{/* 
+    <View style={styles.container}>
       <Timer/>
     </View> */}
 
